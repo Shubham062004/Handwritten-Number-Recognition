@@ -98,11 +98,17 @@ const CanvasBoard = ({ setResult }) => {
       const formData = new FormData();
       formData.append("file", blob, "canvas.png");
 
-      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      const rawApiUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      const apiUrl = rawApiUrl.replace(/\/+$/, ""); // Remove any trailing slashes to prevent //upload
+
       const response = await fetch(`${apiUrl}/upload`, {
         method: "POST",
         body: formData,
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
       const data = await response.json();
 
