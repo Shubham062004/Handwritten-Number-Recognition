@@ -8,9 +8,9 @@ function App() {
   return (
     <div className="glass-panel">
       <h1 className="title-gradient">Digit Recognizer</h1>
-      <p style={{ color: "var(--text-muted)", marginBottom: "2rem" }}>
+      {/* <p style={{ color: "var(--text-muted)", marginBottom: "2rem" }}>
         Draw a number (0-9) inside the glowing boundaries below.
-      </p>
+      </p> */}
 
       <CanvasBoard setResult={setResult} />
 
