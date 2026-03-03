@@ -14,7 +14,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-model = tf.keras.models.load_model("cnn_model.keras")
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "cnn_model.keras")
+model = tf.keras.models.load_model(model_path)
 
 @app.get("/")
 def home():
